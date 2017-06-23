@@ -7,18 +7,6 @@ module ChrnoFormBuilder
     module NestedFormHelper
       extend ActiveSupport::Concern
 
-      included do
-        alias_method_chain :form_for, :blueprints_support
-      end
-
-      ##
-      #  Добавляем к формам автоматический вывод шаблонов.
-      #  @see BlueprintHelper#render_blueprints
-      #
-      def form_for_with_blueprints_support( record, options = {}, &proc )
-        form_for_without_blueprints_support( record, options, &proc ).safe_concat render_blueprints
-      end
-
       ##
       # Возвращает ссылку создающую новую вложенную форму.
       #
